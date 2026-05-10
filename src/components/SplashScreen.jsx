@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import weddingRings from '../assets/weddingrings.png'
 
 const SHOW_MS = 2200
 const REDUCED_SHOW_MS = 350
@@ -42,35 +43,13 @@ export function SplashScreen({ onReveal, onComplete }) {
       }`}
       aria-hidden={exiting}
     >
-      <div className="flex max-w-lg flex-col items-center text-center">
-        <p className="text-boho-earth font-body mb-5 text-xs font-medium uppercase tracking-[0.42em] sm:text-sm">
-          Together with their families
-        </p>
-        <h1
-          aria-label="Darshanika and Kashyapa"
-          className="relative flex flex-col items-center font-script text-boho-charcoal text-[clamp(2.5rem,10vw,4.5rem)] font-normal leading-[1.12]"
-        >
-          <span className="block origin-center -rotate-4 [text-shadow:0_1px_18px_rgb(253_252_249/0.95)]">
-            Darshanika
-          </span>
-          <span className="block origin-center -rotate-4 [text-shadow:0_1px_18px_rgb(253_252_249/0.95)]">
-            Kashyapa
-          </span>
-          <span
-            className="font-ampersand text-boho-gold pointer-events-none absolute top-1/2 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 text-[clamp(1.85rem,7vw,3.5rem)] font-normal leading-none"
-            aria-hidden="true"
-          >
-            &amp;
-          </span>
-        </h1>
-        <div
-          className="border-boho-gold/55 mx-auto mt-8 max-w-[14rem] border-t border-dotted"
-          aria-hidden="true"
-        />
-        <p className="text-boho-charcoal font-body mt-2 text-lg tracking-[0.28em] sm:text-xl">
-          11 · 06 · 2026
-        </p>
-      </div>
+      <img
+        src={weddingRings}
+        alt=""
+        decoding="async"
+        className="splash-rings-wiggle h-auto w-full max-w-[min(22rem,72vw)] select-none object-contain"
+        draggable={false}
+      />
     </div>
   )
 }

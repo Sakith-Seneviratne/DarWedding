@@ -105,6 +105,24 @@ body {
   animation: fade-up-soft 1.1s ease-out 1.05s forwards;
 }
 
+@keyframes splash-wiggle {
+  0%,
+  100% {
+    transform: rotate(-2.25deg) translateX(0);
+  }
+  33% {
+    transform: rotate(2deg) translateX(2px);
+  }
+  66% {
+    transform: rotate(-1.25deg) translateX(-2px);
+  }
+}
+
+.splash-rings-wiggle {
+  transform-origin: center center;
+  animation: splash-wiggle 2.75s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-in,
   .hero-fade-in-delayed,
@@ -113,5 +131,9 @@ body {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .splash-rings-wiggle {
+    animation: none;
   }
 }
