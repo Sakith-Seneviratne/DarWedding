@@ -33,7 +33,7 @@ export function HeroSection() {
             className="hero-fade-in-delayed-2 border-boho-gold/55 mx-auto max-w-[14rem] border-t border-dotted"
             aria-hidden="true"
           />
-          <p className="hero-fade-in-delayed-2 text-boho-charcoal font-body mt-2 text-xl font-normal tracking-[0.28em] sm:text-2xl">
+          <p className="hero-fade-in-delayed-2 text-boho-charcoal font-body mt-0 mb-8 text-xl font-normal tracking-[0.28em] sm:text-2xl">
             11 · 06 · 2026
           </p>
         </div>
