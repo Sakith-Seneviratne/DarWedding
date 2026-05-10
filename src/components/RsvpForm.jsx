@@ -6,6 +6,23 @@ const inputUnderline =
 const labelStyle =
   'text-boho-ink font-heading text-sm font-medium tracking-wide'
 
+function SuccessCheckIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  )
+}
+
 export function RsvpForm({ submitUrl }) {
   const [status, setStatus] = useState('idle')
   const [errorMessage, setErrorMessage] = useState('')
@@ -61,24 +78,34 @@ export function RsvpForm({ submitUrl }) {
   if (status === 'success') {
     return (
       <div
-        className="border-boho-gold-light/40 bg-boho-cream/80 rounded-sm border px-8 py-12 text-center shadow-boho-soft"
+        className="border-boho-parchment/70 relative overflow-hidden rounded-sm border bg-gradient-to-b from-boho-lace via-boho-cream/90 to-boho-lavender-wash/30 px-6 py-12 text-center shadow-boho-soft sm:px-10 sm:py-14"
         role="status"
       >
-        <p className="font-script text-boho-sage-deep text-4xl font-normal sm:text-[2.75rem]">
-          Thank you, darling.
-        </p>
-        <p className="text-boho-ink-soft mt-5 font-body text-base leading-relaxed">
-          Your RSVP is tucked away safely. We&apos;re smiling knowing you might
-          be there among the flowers and fairy lights.
-        </p>
+        <div
+          className="pointer-events-none absolute inset-x-0 -top-px h-20 bg-gradient-to-b from-boho-gold-light/30 to-transparent"
+          aria-hidden="true"
+        />
+        <div className="relative flex flex-col items-center">
+          <div className="border-boho-gold/70 bg-boho-lace text-boho-gold-foil ring-boho-parchment/50 mx-auto flex h-[4.25rem] w-[4.25rem] items-center justify-center rounded-full border-2 shadow-boho-soft ring-4">
+            <SuccessCheckIcon className="h-9 w-9" />
+          </div>
+          <p className="text-boho-earth font-body mt-7 text-xs font-medium uppercase tracking-[0.28em]">
+            RSVP sent
+          </p>
+          <p className="font-script text-boho-sage-deep mt-3 text-3xl font-normal sm:text-[2.65rem]">
+            Thank you!
+          </p>
+          <p className="text-boho-ink-soft mt-5 max-w-md font-body text-base leading-relaxed">
+            Your reply is saved. We&apos;re so happy you might join us among the
+            flowers and fairy lights.
+          </p>
+        </div>
       </div>
     )
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10 pt-2">
-    
-
       <div className="space-y-9">
         <div className="space-y-2">
           <label htmlFor="full_name" className={labelStyle}>
