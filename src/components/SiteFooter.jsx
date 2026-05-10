@@ -8,6 +8,9 @@ export function SiteFooter() {
         </span>{' '}
         · 2026
       </p>
+      <p className="text-boho-earth/30 font-body mt-3 text-xs tracking-[0.12em]">
+        by Sakith Seneviratne
+      </p>
     </footer>
   )
 }
