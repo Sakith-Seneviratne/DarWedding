@@ -124,7 +124,7 @@ export function RsvpForm({ submitUrl }) {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="from-boho-gold-light via-boho-gold to-boho-gold-foil text-boho-charcoal hover:via-boho-gold-foil mt-4 w-full rounded-full bg-gradient-to-br px-6 py-4 font-body text-sm font-semibold tracking-[0.2em] shadow-md transition enabled:hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
+        className="from-boho-gold-light via-boho-gold to-boho-gold-foil text-white hover:via-boho-gold-foil mt-4 w-full rounded-full bg-gradient-to-br px-6 py-4 font-body text-sm font-semibold tracking-[0.2em] shadow-md transition enabled:hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
       >
         {status === 'submitting' ? 'Sending…' : 'Send RSVP'}
       </button>
