@@ -45,7 +45,7 @@ export function HeroSection() {
               width={800}
               height={1200}
               decoding="async"
-              className="mx-auto block h-auto w-full max-h-[min(40vh,400px)] opacity-70 object-contain sm:max-h-[min(44vh,440px)]"
+              className="mx-auto block h-auto w-full max-h-[min(40vh,400px)] opacity-90 object-contain sm:max-h-[min(44vh,440px)]"
               loading="eager"
             />
           </div>
