@@ -104,8 +104,8 @@ function doPost(e) {
     if (!fullName) {
       throw new Error('Full name is required')
     }
-    if (isNaN(guestCount) || guestCount < 1 || guestCount > 6) {
-      throw new Error('Guest count must be between 1 and 6')
+    if (isNaN(guestCount) || guestCount < 0) {
+      throw new Error('Guest count must be 0 or greater')
     }
 
     var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME)

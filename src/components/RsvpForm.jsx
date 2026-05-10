@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 const inputUnderline =
-  'w-full border-0 border-b border-boho-parchment bg-transparent px-0 py-3 font-heading text-base text-boho-ink placeholder:text-boho-earth/45 outline-none transition focus:border-boho-gold'
+  'w-full border-0 border-b border-boho-parchment bg-transparent px-0 py-3 font-heading text-lg text-boho-ink placeholder:text-boho-earth/45 outline-none transition focus:border-boho-gold'
 
 const labelStyle =
-  'text-boho-ink font-heading text-sm font-medium tracking-wide'
+  'text-boho-ink font-heading text-base font-medium tracking-wide'
 
 function SuccessCheckIcon({ className }) {
   return (
@@ -89,13 +89,13 @@ export function RsvpForm({ submitUrl }) {
           <div className="border-boho-gold/70 bg-boho-lace text-boho-gold-foil ring-boho-parchment/50 mx-auto flex h-[4.25rem] w-[4.25rem] items-center justify-center rounded-full border-2 shadow-boho-soft ring-4">
             <SuccessCheckIcon className="h-9 w-9" />
           </div>
-          <p className="text-boho-earth font-body mt-7 text-xs font-medium uppercase tracking-[0.28em]">
+          <p className="text-boho-earth font-body mt-7 text-sm font-medium uppercase tracking-[0.28em]">
             RSVP sent
           </p>
           <p className="font-script text-boho-sage-deep mt-3 text-3xl font-normal sm:text-[2.65rem]">
             Thank you!
           </p>
-          <p className="text-boho-ink-soft mt-5 max-w-md font-body text-base leading-relaxed">
+          <p className="text-boho-ink-soft mt-5 max-w-md font-body text-lg leading-relaxed">
             Your reply is saved. We&apos;re so happy you might join us among the
             flowers and fairy lights.
           </p>
@@ -131,19 +131,15 @@ export function RsvpForm({ submitUrl }) {
             name="guest_count"
             type="number"
             required
-            min={1}
-            max={6}
-            defaultValue={1}
+            min={0}
+            defaultValue={0}
             className={inputUnderline}
           />
-          <p className="text-boho-earth/90 font-body text-xs leading-relaxed">
-            Including you; maximum guest count is 6.
-          </p>
         </div>
       </div>
 
       {errorMessage ? (
-        <p className="text-boho-rose-deep font-body text-sm" role="alert">
+        <p className="text-boho-rose-deep font-body text-base" role="alert">
           {errorMessage}
         </p>
       ) : null}
@@ -151,7 +147,7 @@ export function RsvpForm({ submitUrl }) {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="from-boho-gold-light via-boho-gold to-boho-gold-foil text-white hover:via-boho-gold-foil mt-4 w-full rounded-full bg-gradient-to-br px-6 py-4 font-body text-sm font-semibold tracking-[0.2em] shadow-md transition enabled:hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
+        className="from-boho-gold-light via-boho-gold to-boho-gold-foil text-white hover:via-boho-gold-foil mt-4 w-full rounded-full bg-gradient-to-br px-6 py-4 font-body text-base font-semibold tracking-[0.2em] shadow-md transition enabled:hover:brightness-105 disabled:cursor-wait disabled:opacity-75"
       >
         {status === 'submitting' ? 'Sending…' : 'Send RSVP'}
       </button>
