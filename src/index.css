@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Rellyan Charlotte';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/Rellyan Charlotte.ttf') format('truetype');
+}
+
+@theme {
+  /* Watercolor + gold invitation palette */
+  --color-boho-lace: #fdfcf9;
+  --color-boho-cream: #f7f4ef;
+  --color-boho-cream-deep: #efe8dd;
+  --color-boho-parchment: #e5ddd0;
+  --color-boho-lavender-mist: #c4b8d4;
+  --color-boho-lavender-soft: #ddd4e8;
+  --color-boho-lavender-wash: #e8e0f0;
+  --color-boho-sage: #7d9478;
+  --color-boho-sage-muted: #9aad92;
+  --color-boho-sage-deep: #4d5c48;
+  --color-boho-forest: #3d5244;
+  --color-boho-rose: #c9a3a3;
+  --color-boho-rose-deep: #9a7272;
+  --color-boho-gold: #b8924a;
+  --color-boho-gold-light: #d9c49a;
+  --color-boho-gold-foil: #c9a227;
+  --color-boho-charcoal: #2a2a2a;
+  --color-boho-ink: #2a2a2a;
+  --color-boho-ink-soft: #4a4540;
+  --color-boho-earth: #6b6358;
+
+  --font-script: 'Rellyan Charlotte', 'Segoe Script', cursive;
+  --font-ampersand: 'Alex Brush', ui-serif, cursive;
+  --font-heading: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-body: 'Jost', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-boho-soft: 0 4px 32px -6px rgb(42 42 42 / 0.06);
+  --shadow-boho-card: 0 12px 40px -12px rgb(42 42 42 / 0.09);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-boho-ink);
+  background-color: var(--color-boho-lace);
+  -webkit-font-smoothing: antialiased;
+}
+
+.invite-backdrop {
+  background-color: var(--color-boho-lace);
+  background-image:
+    radial-gradient(
+      ellipse 95% 75% at 100% 0%,
+      rgb(196 184 212 / 0.32),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 85% 70% at 0% 100%,
+      rgb(196 184 212 / 0.24),
+      transparent 52%
+    ),
+    radial-gradient(
+        circle at 50% 50%,
+        rgb(255 255 255 / 0.55) 1px,
+        transparent 1.5px
+      );
+  background-size: auto, auto, 22px 22px;
+}
+
+@keyframes fade-up-soft {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-in {
+  opacity: 0;
+  animation: fade-up-soft 1.35s ease-out 0.15s forwards;
+}
+
+.hero-fade-in-delayed {
+  opacity: 0;
+  animation: fade-up-soft 1.2s ease-out 0.55s forwards;
+}
+
+.hero-fade-in-delayed-2 {
+  opacity: 0;
+  animation: fade-up-soft 1.1s ease-out 0.85s forwards;
+}
+
+.hero-fade-in-delayed-3 {
+  opacity: 0;
+  animation: fade-up-soft 1.1s ease-out 1.05s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-in,
+  .hero-fade-in-delayed,
+  .hero-fade-in-delayed-2,
+  .hero-fade-in-delayed-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
