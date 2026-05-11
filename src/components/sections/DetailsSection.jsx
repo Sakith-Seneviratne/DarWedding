@@ -120,10 +120,10 @@ export function DetailsSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-boho-gold hover:text-boho-forest font-body block rounded-sm border border-boho-parchment/70 bg-white/40 px-6 py-4 text-sm font-medium tracking-wide backdrop-blur-sm transition-colors sm:inline-block sm:min-w-[14rem]"
-                  aria-label="WhatsApp Darshanika at +94 71 473 8562"
+                  aria-label="WhatsApp Dharshanika at +94 71 473 8562"
                 >
                   <span className="text-boho-charcoal block font-heading text-base font-normal">
-                    Darshanika
+                    Dharshanika
                   </span>
                   <span className="text-boho-ink-soft mt-1 flex items-center justify-center gap-2 text-xs tracking-normal">
                     <img
