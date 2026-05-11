@@ -2,12 +2,13 @@ import { RevealSection } from '../RevealSection'
 import calendarArt from '../../assets/calender.png'
 import locationArt from '../../assets/Location.png'
 import timeArt from '../../assets/Time.png'
+import whatsappGlyph from '../../assets/whatsapp-glyph-black-logo-svgrepo-com.svg'
 
 export function DetailsSection() {
   return (
     <section
       id="details"
-      className="scroll-mt-[5.5rem] px-5 py-20 sm:scroll-mt-24 sm:py-28"
+      className="scroll-mt-[5.5rem] px-5 pt-20 pb-8 sm:scroll-mt-24 sm:pt-28 sm:pb-10"
     >
       <div className="mx-auto max-w-5xl">
         <RevealSection>
@@ -101,6 +102,73 @@ export function DetailsSection() {
                 celebrate with us.
               </p>
             </article>
+          </div>
+        </RevealSection>
+
+        <RevealSection className="mt-16">
+          <div className="mx-auto max-w-lg text-center">
+            <h3 className="font-heading text-boho-charcoal text-2xl font-medium tracking-wide">
+              Contact
+            </h3>
+            <p className="text-boho-ink-soft mt-3 font-body text-sm leading-relaxed">
+              Message us on WhatsApp if you have questions about the day.
+            </p>
+            <ul className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:justify-center sm:gap-8">
+              <li>
+                <a
+                  href="https://wa.me/94714738562"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-boho-gold hover:text-boho-forest font-body block rounded-sm border border-boho-parchment/70 bg-white/40 px-6 py-4 text-sm font-medium tracking-wide backdrop-blur-sm transition-colors sm:inline-block sm:min-w-[14rem]"
+                  aria-label="WhatsApp Darshanika at +94 71 473 8562"
+                >
+                  <span className="text-boho-charcoal block font-heading text-base font-normal">
+                    Darshanika
+                  </span>
+                  <span className="text-boho-ink-soft mt-1 flex items-center justify-center gap-2 text-xs tracking-normal">
+                    <img
+                      src={whatsappGlyph}
+                      alt=""
+                      width={14}
+                      height={14}
+                      className="h-3.5 w-3.5 shrink-0 opacity-80"
+                      aria-hidden
+                    />
+                    +94 71 473 8562
+                  </span>
+                  <span className="mt-2 block text-xs underline-offset-4 hover:underline">
+                    Open in WhatsApp
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/94767688224"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-boho-gold hover:text-boho-forest font-body block rounded-sm border border-boho-parchment/70 bg-white/40 px-6 py-4 text-sm font-medium tracking-wide backdrop-blur-sm transition-colors sm:inline-block sm:min-w-[14rem]"
+                  aria-label="WhatsApp Kashyapa at +94 76 768 8224"
+                >
+                  <span className="text-boho-charcoal block font-heading text-base font-normal">
+                    Kashyapa
+                  </span>
+                  <span className="text-boho-ink-soft mt-1 flex items-center justify-center gap-2 text-xs tracking-normal">
+                    <img
+                      src={whatsappGlyph}
+                      alt=""
+                      width={14}
+                      height={14}
+                      className="h-3.5 w-3.5 shrink-0 opacity-80"
+                      aria-hidden
+                    />
+                    +94 76 768 8224
+                  </span>
+                  <span className="mt-2 block text-xs underline-offset-4 hover:underline">
+                    Open in WhatsApp
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
         </RevealSection>
       </div>

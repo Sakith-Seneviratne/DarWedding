@@ -6,7 +6,7 @@ export function RsvpSection() {
   return (
     <section
       id="rsvp"
-      className="scroll-mt-[5.5rem] px-5 py-20 sm:scroll-mt-24 sm:py-28"
+      className="scroll-mt-[5.5rem] px-5 pt-8 pb-20 sm:scroll-mt-24 sm:pt-10 sm:pb-28"
     >
       <div className="from-boho-lavender-wash/55 via-boho-lace/90 to-boho-lavender-soft/35 mx-auto max-w-xl rounded-sm border border-boho-parchment/60 bg-gradient-to-b px-5 py-12 shadow-boho-soft backdrop-blur-sm sm:px-10 sm:py-14">
         <RevealSection>
