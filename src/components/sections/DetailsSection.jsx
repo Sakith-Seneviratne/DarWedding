@@ -111,8 +111,7 @@ export function DetailsSection() {
               Contact
             </h3>
             <p className="text-boho-ink-soft mt-3 font-body text-sm leading-relaxed">
-              Message us on WhatsApp if you have questions about the day.
-            </p>
+            For any questions or warm wishes, feel free to reach us on WhatsApp            </p>
             <ul className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:justify-center sm:gap-8">
               <li>
                 <a
@@ -123,7 +122,7 @@ export function DetailsSection() {
                   aria-label="WhatsApp Dharshanika at +94 71 473 8562"
                 >
                   <span className="text-boho-charcoal block font-heading text-base font-normal">
-                    Dharshanika
+                    Darshanika
                   </span>
                   <span className="text-boho-ink-soft mt-1 flex items-center justify-center gap-2 text-xs tracking-normal">
                     <img
