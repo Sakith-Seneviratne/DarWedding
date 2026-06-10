@@ -1,5 +1,6 @@
 import homeNav from '../assets/homenav.svg?raw'
 import calendarNav from '../assets/calendernav.svg?raw'
+import photosNav from '../assets/photosnav.svg?raw'
 import rsvpNav from '../assets/rsvpnav.svg?raw'
 import { NavLink } from './NavLink'
 
@@ -12,13 +13,16 @@ export function SiteHeader() {
       >
         <ul className="flex items-center gap-2 sm:gap-4">
           <li>
-            <NavLink href="#home" label="Home" svg={homeNav} />
+            <NavLink to="/" label="Home" svg={homeNav} />
           </li>
           <li>
-            <NavLink href="#details" label="Event details" svg={calendarNav} />
+            <NavLink to="/#details" label="Event details" svg={calendarNav} />
           </li>
           <li>
-            <NavLink href="#rsvp" label="RSVP" svg={rsvpNav} />
+            <NavLink to="/#rsvp" label="RSVP" svg={rsvpNav} />
+          </li>
+          <li>
+            <NavLink to="/photos" label="Guest photos" svg={photosNav} />
           </li>
         </ul>
       </nav>

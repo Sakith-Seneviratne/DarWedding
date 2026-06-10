@@ -33,6 +33,7 @@
 
   --font-script: 'Rellyan Charlotte', 'Segoe Script', cursive;
   --font-ampersand: 'Alex Brush', ui-serif, cursive;
+  --font-polaroid: 'Caveat', 'Segoe Print', cursive;
   --font-heading: 'Cormorant Garamond', ui-serif, Georgia, serif;
   --font-body: 'Jost', ui-sans-serif, system-ui, sans-serif;
 
@@ -123,6 +124,25 @@ body {
   animation: splash-wiggle 2.75s ease-in-out infinite;
 }
 
+@keyframes polaroid-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.polaroid-float {
+  animation: polaroid-float 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.polaroid-float:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-in,
   .hero-fade-in-delayed,
@@ -133,7 +153,9 @@ body {
     transform: none;
   }
 
-  .splash-rings-wiggle {
+  .splash-rings-wiggle,
+  .polaroid-float {
     animation: none;
+    will-change: auto;
   }
 }

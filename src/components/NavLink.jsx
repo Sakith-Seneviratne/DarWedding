@@ -1,12 +1,14 @@
-export function NavLink({ href, label, svg }) {
+import { Link } from 'react-router-dom'
+
+export function NavLink({ to, label, svg }) {
   const markup = svg
     .replace(/<\?xml[^>]*>/, '')
     .replace(/<!--[\s\S]*?-->/g, '')
     .trim()
 
   return (
-    <a
-      href={href}
+    <Link
+      to={to}
       aria-label={label}
       className="text-boho-ink-soft hover:text-boho-gold focus-visible:ring-boho-gold inline-flex size-11 items-center justify-center rounded-full transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
@@ -15,6 +17,6 @@ export function NavLink({ href, label, svg }) {
         dangerouslySetInnerHTML={{ __html: markup }}
         aria-hidden="true"
       />
-    </a>
+    </Link>
   )
 }
