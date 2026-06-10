@@ -39,12 +39,12 @@ async function loadPhotos(apiUrl) {
 }
 
 const POLAROID_TILTS = [
-  'sm:-rotate-1',
-  'sm:rotate-1',
-  'sm:-rotate-2',
-  'sm:rotate-[0.5deg]',
-  'sm:-rotate-[0.5deg]',
-  'sm:rotate-2',
+  '-rotate-1 sm:-rotate-1',
+  'rotate-1 sm:rotate-1',
+  '-rotate-[1.5deg] sm:-rotate-2',
+  'rotate-[0.5deg]',
+  '-rotate-[0.5deg]',
+  'rotate-[1.5deg] sm:rotate-2',
 ]
 
 /** Width % within the grid cell — wider for landscape, narrower for tall portraits (sm+). */
@@ -96,7 +96,7 @@ function PolaroidCard({ photo, index }) {
         target="_blank"
         rel="noopener noreferrer"
         style={{ width: size.loaded ? `${size.widthPercent}%` : '100%' }}
-        className={`bg-boho-lace block w-full max-w-full p-2 shadow-[0_6px_20px_-4px_rgb(42_42_42/0.18),0_2px_6px_-2px_rgb(42_42_42/0.08)] transition duration-300 hover:z-10 hover:scale-[1.03] hover:shadow-[0_14px_32px_-8px_rgb(42_42_42/0.22),0_4px_10px_-4px_rgb(42_42_42/0.1)] sm:max-w-none sm:p-3 ${message ? 'pb-4 sm:pb-6' : 'pb-5 sm:pb-8'} ${tilt} hover:rotate-0 max-sm:rotate-0 ${size.loaded ? 'opacity-100' : 'opacity-95'}`}
+        className={`bg-boho-lace block w-full max-w-full p-2 shadow-[0_6px_20px_-4px_rgb(42_42_42/0.18),0_2px_6px_-2px_rgb(42_42_42/0.08)] transition duration-300 hover:z-10 hover:scale-[1.03] hover:shadow-[0_14px_32px_-8px_rgb(42_42_42/0.22),0_4px_10px_-4px_rgb(42_42_42/0.1)] sm:max-w-none sm:p-3 ${message ? 'pb-4 sm:pb-6' : 'pb-5 sm:pb-8'} ${tilt} hover:rotate-0 ${size.loaded ? 'opacity-100' : 'opacity-95'}`}
       >
         <div className="bg-boho-cream-deep/40 overflow-hidden">
           <img
