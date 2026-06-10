@@ -143,6 +143,13 @@ body {
   animation-play-state: paused;
 }
 
+@media (max-width: 639px) {
+  .polaroid-float {
+    animation: none;
+    will-change: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-in,
   .hero-fade-in-delayed,

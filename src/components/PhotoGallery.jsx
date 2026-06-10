@@ -1,5 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import weddingRings from '../assets/weddingrings.png'
 import { PHOTO_GALLERY_POLL_MS } from '../config/photos'
+
+function GalleryLoadingState() {
+  return (
+    <div
+      className="flex flex-col items-center justify-center py-14 sm:py-16"
+      role="status"
+      aria-live="polite"
+    >
+      <span className="sr-only">Loading gallery</span>
+      <img
+        src={weddingRings}
+        alt=""
+        decoding="async"
+        draggable={false}
+        className="splash-rings-wiggle h-auto w-full max-w-[min(14rem,48vw)] select-none object-contain sm:max-w-[min(16rem,40vw)]"
+      />
+    </div>
+  )
+}
 
 async function loadPhotos(apiUrl) {
   const url = new URL(apiUrl.trim())
@@ -19,17 +39,20 @@ async function loadPhotos(apiUrl) {
 }
 
 const POLAROID_TILTS = [
-  '-rotate-1',
-  'rotate-1',
-  '-rotate-2',
-  'rotate-[0.5deg]',
-  '-rotate-[0.5deg]',
-  'rotate-2',
+  'sm:-rotate-1',
+  'sm:rotate-1',
+  'sm:-rotate-2',
+  'sm:rotate-[0.5deg]',
+  'sm:-rotate-[0.5deg]',
+  'sm:rotate-2',
 ]
 
-/** Width % within the column — wider for landscape, narrower for tall portraits. */
+/** Width % within the grid cell — wider for landscape, narrower for tall portraits (sm+). */
 function getPolaroidWidthPercent(width, height) {
   if (!width || !height) return 100
+
+  const isMobile = window.matchMedia('(max-width: 639px)').matches
+  if (isMobile) return 100
 
   const ratio = width / height
   if (ratio >= 1.45) return 100
@@ -65,15 +88,15 @@ function PolaroidCard({ photo, index }) {
 
   return (
     <li
-      className="polaroid-float mb-5 break-inside-avoid sm:mb-7"
+      className="polaroid-float flex w-full justify-center"
       style={{ animationDelay: floatDelay, animationDuration: floatDuration }}
     >
       <a
         href={photo.thumbnailUrl}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ width: `${size.widthPercent}%` }}
-        className={`bg-boho-lace mx-auto block p-2.5 shadow-[0_6px_20px_-4px_rgb(42_42_42/0.18),0_2px_6px_-2px_rgb(42_42_42/0.08)] transition duration-300 hover:z-10 hover:scale-[1.03] hover:shadow-[0_14px_32px_-8px_rgb(42_42_42/0.22),0_4px_10px_-4px_rgb(42_42_42/0.1)] sm:p-3 ${message ? 'pb-5 sm:pb-6' : 'pb-7 sm:pb-8'} ${tilt} hover:rotate-0 ${size.loaded ? 'opacity-100' : 'opacity-95'}`}
+        style={{ width: size.loaded ? `${size.widthPercent}%` : '100%' }}
+        className={`bg-boho-lace block w-full max-w-full p-2 shadow-[0_6px_20px_-4px_rgb(42_42_42/0.18),0_2px_6px_-2px_rgb(42_42_42/0.08)] transition duration-300 hover:z-10 hover:scale-[1.03] hover:shadow-[0_14px_32px_-8px_rgb(42_42_42/0.22),0_4px_10px_-4px_rgb(42_42_42/0.1)] sm:max-w-none sm:p-3 ${message ? 'pb-4 sm:pb-6' : 'pb-5 sm:pb-8'} ${tilt} hover:rotate-0 max-sm:rotate-0 ${size.loaded ? 'opacity-100' : 'opacity-95'}`}
       >
         <div className="bg-boho-cream-deep/40 overflow-hidden">
           <img
@@ -86,10 +109,10 @@ function PolaroidCard({ photo, index }) {
           />
         </div>
         {(guestName || message) && (
-          <div className="mt-3 px-1 text-center sm:mt-3.5">
+          <div className="mt-2 px-0.5 text-center sm:mt-3.5 sm:px-1">
             {guestName ? (
               <p
-                className="font-polaroid text-boho-ink truncate text-xl leading-tight sm:text-2xl"
+                className="font-polaroid text-boho-ink truncate text-base leading-tight sm:text-2xl"
                 title={guestName}
               >
                 {guestName}
@@ -113,8 +136,12 @@ function PolaroidCard({ photo, index }) {
 export function PhotoGallery({ apiUrl, refreshKey = 0 }) {
   const [photos, setPhotos] = useState([])
   const [status, setStatus] = useState('loading')
-  const [errorMessage, setErrorMessage] = useState('')
+  const photosRef = useRef(photos)
   const isConfigured = Boolean(apiUrl?.trim())
+
+  useEffect(() => {
+    photosRef.current = photos
+  }, [photos])
 
   useEffect(() => {
     if (!isConfigured) {
@@ -131,15 +158,13 @@ export function PhotoGallery({ apiUrl, refreshKey = 0 }) {
         }
         setPhotos(nextPhotos)
         setStatus('ready')
-        setErrorMessage('')
-      } catch (err) {
+      } catch {
         if (cancelled) {
           return
         }
-        setStatus('error')
-        setErrorMessage(
-          err instanceof Error ? err.message : 'Could not load the gallery.',
-        )
+        if (photosRef.current.length === 0) {
+          setStatus('loading')
+        }
       }
     }
 
@@ -156,35 +181,25 @@ export function PhotoGallery({ apiUrl, refreshKey = 0 }) {
   }
 
   if (status === 'loading') {
-    return (
-      <p className="text-boho-earth text-center font-body text-sm">
-        Loading gallery…
-      </p>
-    )
-  }
-
-  if (status === 'error') {
-    return (
-      <p className="text-boho-rose-deep text-center font-body text-sm" role="alert">
-        {errorMessage}
-      </p>
-    )
+    return <GalleryLoadingState />
   }
 
   if (photos.length === 0) {
     return (
-      <p className="text-boho-ink-soft text-center font-body text-base leading-relaxed">
-        No photos yet — be the first to share a moment from the day.
-      </p>
+      <div className="hero-fade-in">
+        <p className="text-boho-ink-soft text-center font-body text-base leading-relaxed">
+          No photos yet — be the first to share a moment from the day.
+        </p>
+      </div>
     )
   }
 
   return (
-    <div className="space-y-4">
-      <p className="text-boho-earth text-center font-body text-xs uppercase tracking-[0.28em]">
+    <div className="hero-fade-in space-y-4">
+      <p className="text-boho-earth text-center font-body text-[0.65rem] uppercase tracking-[0.24em] sm:text-xs sm:tracking-[0.28em]">
         {photos.length} {photos.length === 1 ? 'photo' : 'photos'} · updates every 30s
       </p>
-      <ul className="columns-2 gap-x-5 px-1 sm:columns-3 sm:gap-x-7 sm:px-2">
+      <ul className="mx-auto grid w-full grid-cols-2 gap-x-2.5 gap-y-4 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-7">
         {photos.map((photo, index) => (
           <PolaroidCard key={photo.id} photo={photo} index={index} />
         ))}

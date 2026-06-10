@@ -38,7 +38,7 @@ export function PhotosSection() {
           <h3 className="font-heading text-boho-charcoal text-center text-2xl font-normal sm:text-3xl">
             Live gallery
           </h3>
-          <div className="mt-8">
+          <div className="mt-8 max-sm:-mx-1">
             <PhotoGallery apiUrl={PHOTOS_API_URL} refreshKey={galleryRefreshKey} />
           </div>
         </RevealSection>
